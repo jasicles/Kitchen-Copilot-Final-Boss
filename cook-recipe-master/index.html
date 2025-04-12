@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Cook Recipe</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <div class="mobile-container">
+        <header>
+            <img src="./images/logo-trans.png" alt="logo">
+            <input type="text" id="search-term">
+            <button id="search"><i class="fas fa-search"></i></button>
+        </header>
+        <div class="fav-container">
+            <h3>Favorite Meals</h3>
+            <ul class="fav-meals" id="fav-meals">
+            </ul>
+        </div>
+        <div class="filter-container">
+            <h3>Filter Meals</h3>
+            <ul class="filter-controls" id="filter-controls">
+                <li id="li-area">
+                    <img src="https://www.countryflags.io/EU/flat/64.png" alt="Area">
+                    <span>Area</span>
+                </li>
+                <li id="li-category">
+                    <img src="./images/Seafood.png" alt="Category">
+                    <span>Category</span>
+                </li>
+             </ul>
+        </div>
+        <div class="filter-container">
+            <h3>Dietary Restrictions</h3>
+            <ul class="dietary-filters" id="dietary-filters">
+                <li>
+                    <input type="checkbox" id="halal" class="dietary-checkbox">
+                    <label for="halal">Halal</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="vegetarian" class="dietary-checkbox">
+                    <label for="vegetarian">Vegetarian</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="vegan" class="dietary-checkbox">
+                    <label for="vegan">Vegan</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="gluten-free" class="dietary-checkbox">
+                    <label for="gluten-free">Gluten Free</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="dairy-free" class="dietary-checkbox">
+                    <label for="dairy-free">Dairy Free</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="nut-free" class="dietary-checkbox">
+                    <label for="nut-free">Nut Free</label>
+                </li>
+            </ul>
+        </div>
+        <div class="meals" id="meals"></div>
+        <div class= "control-section">
+            <button class="btn-refresh" id="btn-refresh"><i class="fas fa-sync-alt"></i></button>
+        </div>
+    </div>
+
+    <div class="popup-container hidden" id="meal-popup">
+        <div class="popup">
+            <button id="close-popup" class="close-popup">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="meal-info" id="meal-info"></div>
+        </div>
+    </div>
+
+    <div class="select-popup-container hidden" id="select-popup">
+        <div class="popup">
+            <button id="close-select-popup" class="close-popup">
+                <i class="fas fa-times"></i>
+            </button>
+            <ul class="options" id="options">
+            </ul>
+        </div>
+    </div>
+
+    <!-- Gamification Section -->
+    <div class="gamification-container">
+        <div class="world-map-section">
+            <h2>World Food Journey</h2>
+            <div class="progress-map" id="progress-map">
+                <div class="map-container">
+                    <img src="./images/world-map.png" alt="World Map">
+                    <div class="player-marker" id="player-marker">
+                        <i class="fas fa-plane"></i>
+                    </div>
+                </div>
+                <div class="destinations">
+                    <!-- Cities will be added dynamically -->
+                </div>
+            </div>
+        </div>
+
+        <div class="collectibles-section">
+            <h3>Your Collection</h3>
+            <div class="collection-stats">
+                <div class="stat">
+                    <i class="fas fa-apple-alt"></i>
+                    <span id="fruit-tokens">0</span>
+                </div>
+                <div class="stat">
+                    <i class="fas fa-book-open"></i>
+                    <span id="recipe-cards">0</span>
+                </div>
+                <div class="stat">
+                    <i class="fas fa-star"></i>
+                    <span id="xp-points">0</span>
+                </div>
+            </div>
+            <div class="daily-reward" id="daily-reward">
+                <h4>Daily Reward</h4>
+                <button class="claim-btn" id="claim-daily">
+                    <i class="fas fa-gift"></i> Claim
+                </button>
+            </div>
+        </div>
+
+        <div class="challenges-section">
+            <h3>Daily Quests</h3>
+            <div class="quests-list" id="quests-list">
+                <!-- Quests will be added dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Community Section -->
+    <div class="community-section">
+        <h2>Cook To Impress</h2>
+        <div class="community-controls">
+            <button id="post-photo" class="post-btn">
+                <i class="fas fa-camera"></i> Share Your Dish
+            </button>
+            <select id="meal-time" class="meal-filter">
+                <option value="all">All Times</option>
+                <option value="breakfast">Breakfast</option>
+                <option value="lunch">Lunch</option>
+                <option value="dinner">Dinner</option>
+                <option value="snacks">Snacks</option>
+            </select>
+        </div>
+        <div class="community-feed" id="community-feed">
+            <!-- Posts will be added here dynamically -->
+        </div>
+    </div>
+
+    <!-- Add Post Modal -->
+    <div class="post-modal hidden" id="post-modal">
+        <div class="post-modal-content">
+            <button id="close-post-modal" class="close-modal">
+                <i class="fas fa-times"></i>
+            </button>
+            <h3>Share Your Dish</h3>
+            <form id="post-form">
+                <input type="text" id="dish-name" placeholder="Name your dish" required>
+                <select id="post-meal-time" required>
+                    <option value="breakfast">Breakfast</option>
+                    <option value="lunch">Lunch</option>
+                    <option value="dinner">Dinner</option>
+                    <option value="snacks">Snacks</option>
+                </select>
+                <textarea id="dish-description" placeholder="Tell us about your dish..." required></textarea>
+                <input type="file" id="dish-photo" accept="image/*" required>
+                <button type="submit" class="submit-post">Share</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add chatbot interface -->
+    <div class="chatbot-container" id="chatbot-container">
+        <div class="chat-header">
+            <h3>Recipe Assistant</h3>
+            <button id="toggle-chat" class="toggle-chat">
+                <i class="fas fa-comments"></i>
+            </button>
+        </div>
+        <div class="chat-body" id="chat-body">
+            <div class="chat-messages" id="chat-messages">
+                <div class="message bot">
+                    Hi! I'm your Healthy Living Chatbot – here to answer your food and wellness questions with trusted info from the Health Promotion Board (HPB)!
+                </div>
+            </div>
+            <div class="chat-input-container">
+                <input type="text" id="chat-input" placeholder="Type your message...">
+                <button id="send-message">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+
+</html>

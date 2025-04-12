@@ -1,0 +1,47 @@
+{
+  "categories": {
+    "healthy_eating": {
+      "title": "Healthy Eating",
+      "summary": "Tips and guidelines to maintain a balanced and nutritious diet.",
+      "resources": [
+        {
+          "question": "What is My Healthy Plate?",
+          "answer": "My Healthy Plate is a visual guide developed by HPB to help you eat healthily. It includes half a plate of fruit and vegetables, a quarter plate of wholegrains, and a quarter plate of protein-rich food."
+        },
+        {
+          "question": "How many servings of fruit and vegetables should I eat daily?",
+          "answer": "You should aim to eat at least 2 servings of fruit and 2 servings of vegetables every day."
+        }
+      ]
+    },
+    "exercise_and_fitness": {
+      "title": "Exercise and Fitness",
+      "summary": "Guides for staying active through all stages of life.",
+      "resources": [
+        {
+          "question": "How much exercise do adults need?",
+          "answer": "Adults should aim for at least 150 minutes of moderate-intensity aerobic physical activity every week."
+        },
+        {
+          "question": "What are good exercises for seniors?",
+          "answer": "Low-impact exercises like brisk walking, stretching, tai chi, and water aerobics are recommended for seniors."
+        }
+      ]
+    },
+    "mental_wellbeing": {
+      "title": "Mental Wellbeing",
+      "summary": "HPB offers tools and resources to support your emotional and mental health.",
+      "resources": [
+        {
+          "question": "How can I manage stress?",
+          "answer": "Try deep breathing, staying active, maintaining social connections, and seeking help when needed. HPB's 'mindline.sg' offers free tools."
+        },
+        {
+          "question": "What is mindline.sg?", 
+          "answer": "mindline.sg is a digital platform developed by HPB to provide mental health support and self-help resources."
+        }
+      ]
+    }
+  }
+}
+
